@@ -251,19 +251,19 @@ export default function CrosswordGrid({
                        (rowIndex === 4 && colIndex === 3) || // TRANSITION
                        (rowIndex === 8 && colIndex === 0) || // TRANSITIONEND
                        (rowIndex === 14 && colIndex === 3) || // TRANSFORM
-                       (rowIndex === 18 && colIndex === 6) || // INFINITE
-                       (rowIndex === 1 && colIndex === 1) || // KEYFRAMES
+                       (rowIndex === 18 && colIndex === 5) || // INFINITE
+                       (rowIndex === 4 && colIndex === 1) || // KEYFRAMES
                        (rowIndex === 4 && colIndex === 8) || // OPACITY
-                       (rowIndex === 5 && colIndex === 5) ? ( // JAVASCRIPT
+                       (rowIndex === 11 && colIndex === 5) ? ( // JAVASCRIPT
                         <span className="absolute top-0 left-0 text-xs font-bold text-gray-600 leading-none p-0.5">
                           {(rowIndex === 0 && colIndex === 7) ? "5" : 
                            (rowIndex === 4 && colIndex === 3) ? "1" :
                            (rowIndex === 8 && colIndex === 0) ? "3" :
                            (rowIndex === 14 && colIndex === 3) ? "6" :
-                           (rowIndex === 18 && colIndex === 6) ? "2" :
-                           (rowIndex === 1 && colIndex === 1) ? "1" :
+                           (rowIndex === 18 && colIndex === 5) ? "2" :
+                           (rowIndex === 4 && colIndex === 1) ? "7" :
                            (rowIndex === 4 && colIndex === 8) ? "4" :
-                           (rowIndex === 5 && colIndex === 5) ? "3" : ""}
+                           (rowIndex === 11 && colIndex === 5) ? "8" : ""}
                         </span>
                       ) : null}
                       
