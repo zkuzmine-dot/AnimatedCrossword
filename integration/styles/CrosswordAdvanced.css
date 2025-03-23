@@ -1,0 +1,368 @@
+/* Основные стили для контейнера кроссворда */
+.crossword-advanced-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Шапка с заголовками */
+.crossword-advanced-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.crossword-advanced-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(120deg, #ffffff, #e6e6ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.crossword-advanced-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Основной контент с кроссвордом и подсказками */
+.crossword-advanced-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Стили для сетки кроссворда */
+.crossword-grid-container {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.crossword-grid-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.crossword-grid-area {
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.crossword-grid {
+  display: grid;
+  gap: 2px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+}
+
+.crossword-cell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cell-empty {
+  background: transparent;
+  border: none;
+}
+
+.cell-active {
+  background: white;
+  border: 1px solid #ccc;
+}
+
+.cell-number {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: 0.7rem;
+  color: #333;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.crossword-input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  caret-color: #6a11cb;
+}
+
+.cell-correct {
+  background-color: rgba(144, 238, 144, 0.8);
+}
+
+.cell-incorrect {
+  background-color: rgba(240, 128, 128, 0.8);
+}
+
+/* Стили для панели управления */
+.crossword-controls {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.crossword-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.check-button, .reset-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.check-button {
+  background: #4caf50;
+  color: white;
+}
+
+.reset-button {
+  background: #f44336;
+  color: white;
+}
+
+.check-button:hover, .reset-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.check-button:active, .reset-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для прогресса */
+.crossword-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.progress-text {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #00b09b, #96c93d);
+  border-radius: 5px;
+  transition: width 0.5s ease;
+}
+
+/* Стили для сообщений о статусе */
+.status-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.status-success {
+  background-color: rgba(76, 175, 80, 0.8);
+  color: white;
+}
+
+.status-error {
+  background-color: rgba(244, 67, 54, 0.8);
+  color: white;
+}
+
+.status-warning {
+  background-color: rgba(255, 193, 7, 0.8);
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Стили для панели подсказок */
+.clues-panel {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 350px;
+  max-width: 100%;
+}
+
+.clues-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.clues-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.clues-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.clues-direction {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.clues-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.clue-item {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.clue-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.clue-active {
+  background: rgba(255, 255, 255, 0.3);
+  border-left: 4px solid #4caf50;
+}
+
+.clue-number {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.clue-text {
+  font-size: 0.95rem;
+}
+
+/* Стили для кнопки отображения примеров анимаций */
+.animation-examples-toggle {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.toggle-examples-button {
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-examples-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-examples-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 768px) {
+  .crossword-advanced-title {
+    font-size: 2rem;
+  }
+  
+  .crossword-advanced-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .crossword-grid-container, 
+  .clues-panel {
+    width: 100%;
+  }
+  
+  .crossword-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
