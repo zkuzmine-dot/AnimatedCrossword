@@ -71,8 +71,30 @@ export default function CrosswordGrid({
         nextCol = col + 1;
         break;
       case 'Backspace':
-        if (!grid[`${row}-${col}`]) {
+      case 'Delete':
+        const currentKey = `${row}-${col}`;
+        // Если в текущей ячейке есть значение, стираем его
+        if (grid[currentKey]) {
+          setGrid(prev => {
+            const newGrid = { ...prev };
+            delete newGrid[currentKey];
+            return newGrid;
+          });
+          return; // Мы уже обработали клавишу, выходим из функции
+        }
+        // Если ячейка пуста и нажат Backspace, переходим к предыдущей и стираем её содержимое
+        if (key === 'Backspace') {
           nextCol = col - 1;
+          const prevKey = `${nextRow}-${nextCol}`;
+          
+          // Стираем содержимое предыдущей ячейки, если существует
+          if (grid[prevKey]) {
+            setGrid(prev => {
+              const newGrid = { ...prev };
+              delete newGrid[prevKey];
+              return newGrid;
+            });
+          }
         }
         break;
       default:
