@@ -34,6 +34,24 @@ export default function CluesPanel({ words, activeClue, setActiveClue }: CluesPa
   const handleClueClick = (direction: string, row: number, col: number, word: string) => {
     setActiveClue({ direction, row, col, word });
   };
+  
+  // Функция для получения номера подсказки в соответствии с нумерацией в кроссворде
+  const getClueNumber = (direction: string, row: number, col: number): string => {
+    // Номера в соответствии с кроссвордом
+    if (direction === 'horizontal') {
+      if (row === 4 && col === 3) return "1"; // TRANSITION
+      if (row === 18 && col === 5) return "2"; // INFINITE
+      if (row === 8 && col === 0) return "3"; // TRANSITIONEND
+      if (row === 0 && col === 7) return "5"; // LOADER
+      if (row === 14 && col === 3) return "6"; // TRANSFORM
+    } else if (direction === 'vertical') {
+      if (row === 0 && col === 8) return "4"; // OPACITY
+      if (row === 4 && col === 1) return "7"; // KEYFRAMES
+      if (row === 11 && col === 5) return "8"; // JAVASCRIPT
+      if (row === 4 && col === 3) return "1"; // TIMINGFUNCTION
+    }
+    return "?"; // Если не найдено соответствие
+  };
 
   return (
     <div className="w-full lg:w-2/5 bg-white rounded-lg shadow-md p-4 overflow-auto">
@@ -59,7 +77,7 @@ export default function CluesPanel({ words, activeClue, setActiveClue }: CluesPa
                 }`}
                 onClick={() => handleClueClick('horizontal', wordObj.row, wordObj.col, wordObj.word)}
               >
-                <span className="font-semibold">{index + 1}.</span> {wordObj.clue}
+                <span className="font-semibold">{getClueNumber('horizontal', wordObj.row, wordObj.col)}.</span> {wordObj.clue}
               </div>
             ))}
           </TabsContent>
@@ -77,7 +95,7 @@ export default function CluesPanel({ words, activeClue, setActiveClue }: CluesPa
                 }`}
                 onClick={() => handleClueClick('vertical', wordObj.row, wordObj.col, wordObj.word)}
               >
-                <span className="font-semibold">{index + 1}.</span> {wordObj.clue}
+                <span className="font-semibold">{getClueNumber('vertical', wordObj.row, wordObj.col)}.</span> {wordObj.clue}
               </div>
             ))}
           </TabsContent>
